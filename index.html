@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -18,6 +19,81 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 
+	<script>
+
+			function calcularPuntuacion() {
+				var str;
+				
+				str = "Puntuación Vuelo: 42 puntos" +  "\n" +
+				"Puntos remontada: " + puntosRemontada() + "\n" +
+				"Puntos altura: " + puntosAltura() + "\n" +
+				"Puntos posición: " + puntosPosicion() + "\n" +
+				"Puntos picado: " + puntosPicado() + "\n" +
+				"Puntos captura: " + puntosCaptura() + "\n" +
+				"Valoración tecnica global: " + valoracionTecnicaGlobal() + "\n" +
+				"Bonificación tiempo: " + bonificacionTiempo() + "\n" +
+				"Recogida señuelo: " + penalizacionRecogidaSeñuelo() + "\n" +
+				"Enseñar señuelo: " + penalizacionEnsenarSenuelo() + "\n" +
+				"Suelta paloma jueces: " + penalizacionSueltaPaloma() + "\n" +
+				"Enseñar paloma: " + penalizacionEnseñarPaloma() + "\n" +
+				"Valoración picado: " + valoracionJuezPicado();
+				
+
+				alert(str);
+			}
+
+			function puntosRemontada(){
+				return 12;
+			}
+
+			function puntosAltura(){
+				return document.getElementById("alturaServicio").value * 0,1;
+			}
+
+			function puntosPosicion(){
+				return 16;
+			}
+
+			function puntosPicado(){
+				return 10;
+			}
+
+			function puntosCaptura(){
+				return 10;
+			}
+
+			function valoracionTecnicaGlobal(){
+				return 98;
+			}
+
+			function bonificacionTiempo(){
+				return 4;
+			}
+
+			function penalizacionRecogidaSeñuelo(){
+				return 0;
+			}
+
+			function penalizacionEnsenarSenuelo(){
+				return 0;
+			}
+
+			function penalizacionSueltaPaloma(){
+				return 0;
+			}
+
+			function penalizacionEnseñarPaloma(){
+				return 0;
+			}
+
+			function valoracionJuezPicado(){
+				return 0;
+			}
+
+
+	</script>
+	
+
 	<body>
 
 		<div class="wrapper">
@@ -27,33 +103,33 @@
 					<div class="form-row">
 						<div class="form-wrapper">
 							<label for="">Tiempo salida</label>
-							<input type="time" class="form-control" placeholder="Your Name">
+							<input type="time" class="form-control" id="tiempoSalida" placeholder="Tiempo salida">
 						</div>
 						<div class="form-wrapper">
 							<label for="">Tiempo servicio</label>
-							<input type="time" class="form-control" placeholder="Phone">
+							<input type="time" class="form-control" id="tiempoServicio" placeholder="Tiempo servicio">
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-wrapper">
 							<label for="">Altura de servicio</label>
-							<input type="number" class="form-control">
+							<input type="number" class="form-control" id="alturaServicio" placeholder="Altura servicio">
 						</div>
 						<div class="form-wrapper">
 							<label for="">Posición de servicio</label>
-							<input type="number" class="form-control">
+							<input type="number" class="form-control" id="posicionServicio" placeholder="posicion servicio">
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-wrapper">
-							<label for="">Picado</label>
-							<input type="number" class="form-control">
+							<label for="">Velocidad picado</label>
+							<input type="number" class="form-control" id="velocidadPicado" placeholdeer="picado">
 						</div>
 					</div>
 					<div class="form-row last">
 						<div class="form-wrapper">
 							<label for="">Captura</label>
-							<select name="" id="" class="form-control">
+							<select name="captura" id="captura" class="form-control">
 								<option value="1">Sin captura</option>
 								<option value="2">Captura con cuchillada limpia</option>
 								<option value="3">Captura con persecución corta o en el suelo</option>
@@ -66,7 +142,7 @@
 						</div>
 						<div class="form-wrapper">
 							<label for="">Recoger sin dudas</label>
-							<select name="" id="" class="form-control">
+							<select name="recogida" id="recogida" class="form-control">
 								<option value="0">0</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -78,17 +154,17 @@
 					</div>
 					<div class="checkbox">
 						<label>
-							<input type="checkbox">Enseñar sueñuelo durante el desarrollo del lance
+							<input type="checkbox" id="ensenarSenuelo">Enseñar sueñuelo durante el desarrollo del lance
 							<span class="checkmark"></span>
 						</label>
 					</div>
 					<div class="checkbox">
 						<label>
-							<input type="checkbox">Suelta de la paloma en el minuto 8 por los jueces
+							<input type="checkbox" id="sueltaPalomaJueces">Suelta de la paloma en el minuto 8 por los jueces
 							<span class="checkmark"></span>
 						</label>
 					</div>
-					<div class="checkbox">
+					<div class="checkbox" id="ensenarPaloma">
 							<label>
 								<input type="checkbox">Enseñar paloma
 								<span class="checkmark"></span>
@@ -97,7 +173,7 @@
 					<div class="form-row last">
 							<div class="form-wrapper">
 								<label for="">Valoración del picado</label>
-								<select name="" id="" class="form-control">
+								<select name="valoracionPicado" id="valoracionPicado" class="form-control">
 									<option value="0">0</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
@@ -107,8 +183,8 @@
 								<i class="zmdi zmdi-chevron-down"></i>
 							</div>
 						</div>
-					<button data-text="Calcular puntuación" onclick="javascript:alert('0 puntos pringao!')">
-						<span>Calcular Puntuación 2</span>
+					<button data-text="Calcular puntuación" onclick="javascript:calcularPuntuacion();">
+						<span>Calcular Puntuación</span>
 					</button>
 				</form>
 			</div>
