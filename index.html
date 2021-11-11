@@ -24,14 +24,14 @@
 			function calcularPuntuacion() {
 				var str;
 				
-				str = "Puntuación Vuelo: " + calcularPuntuacionTotal() + " puntos" +  "\n" +
-				"Puntos remontada: " + puntosRemontada() + "\n" +
+				str = "Puntuación Vuelo: " + Math.floor(calcularPuntuacionTotal()*100)/100 + " puntos" +  "\n" +
+				"Puntos remontada: " + Math.floor(puntosRemontada()*100)/100 + "\n" +
 				"Puntos altura: " + puntosAltura() + "\n" +
 				"Puntos posición: " + puntosPosicion() + "\n" +
 				"Puntos picado: " + puntosPicado() + "\n" +
-				"Puntos captura: " + puntosCaptura() + "\n" +
+				"Puntos captura: " + Math.floor(puntosCaptura()*100)/100 + "\n" +
 				" ---------------- " + "\n" +
-				"Valoración tecnica global: " + valoracionTecnicaGlobal() + "\n" +
+				"Valoración tecnica global: " + Math.floor(valoracionTecnicaGlobal()*100)/100 + "\n" +
 				" ---------------- " + "\n" +
 				"Bonificación tiempo: " + bonificacionTiempo() + "\n" +
 				"Recogida señuelo: " + bonificacionRecogidaSeñuelo() + "\n" +
@@ -53,7 +53,6 @@
 				parseFloat(puntosPosicion()) +
 				parseFloat(puntosPicado()) + 
 				parseFloat(puntosCaptura()) + 
-				parseFloat(valoracionTecnicaGlobal()) + 
 				parseFloat(bonificacionTiempo()) + 
 				parseFloat(bonificacionRecogidaSeñuelo()) +
 				parseFloat(penalizacionEnsenarSenuelo()) + 
@@ -118,6 +117,9 @@
 				var tiempoSobrante = 8 - tiempo;
 				if(tiempoSobrante < 0){
 					return 0;
+				}
+				if(tiempoSobrante > 3){
+					return 6;
 				}
 				return Math.floor(tiempoSobrante) * 2;
 			}
