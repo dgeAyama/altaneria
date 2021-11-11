@@ -161,7 +161,7 @@
 
 		<div class="wrapper">
 			<div class="inner">
-				<form action="">
+				<form action="" onsubmit="return false;">
 					<h3>Puntuación Altaneria</h3>
 					<div class="form-row">
 						<div class="form-wrapper">
@@ -253,11 +253,11 @@
 								<i class="zmdi zmdi-chevron-down"></i>
 							</div>
 						</div>
-
+						<button data-text="Calcular puntuación" onclick="javascript:calcularPuntuacion();">
+								<span>Calcular Puntuación</span>
+						</button>
 				</form>
-				<button data-text="Calcular puntuación" onclick="javascript:calcularPuntuacion();">
-						<span>Calcular Puntuación</span>
-				</button>
+			
 
 			</div>
 		</div>
