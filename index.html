@@ -24,7 +24,8 @@
 			function calcularPuntuacion() {
 				var str;
 				
-				str = "Puntuación Vuelo: " + Math.floor(calcularPuntuacionTotal()*100)/100 + " puntos" +  "\n" +
+				str = "Nombre: " + document.getElementById("nombre").value + " - Fecha : " + document.getElementById("fecha").value + "\n" +
+				"Puntuación Vuelo: " + Math.floor(calcularPuntuacionTotal()*100)/100 + " puntos" +  "\n" +
 				"Puntos remontada: " + Math.floor(puntosRemontada()*100)/100 + "\n" +
 				"Puntos altura: " + puntosAltura() + "\n" +
 				"Puntos posición: " + puntosPosicion() + "\n" +
@@ -163,6 +164,16 @@
 			<div class="inner">
 				<form action="" onsubmit="return false;">
 					<h3>Puntuación Altaneria</h3>
+					<div class="form-row">
+							<div class="form-wrapper">
+								<label for="">Nombre</label>
+								<input type="text" class="form-control" id="nombre" placeholder="Nombre">
+							</div>
+							<div class="form-wrapper">
+								<label for="">Fecha</label>
+								<input type="date" class="form-control" id="fecha" placeholder="Fecha vuelo">
+							</div>
+						</div>
 					<div class="form-row">
 						<div class="form-wrapper">
 							<label for="">Tiempo salida</label>
