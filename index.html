@@ -32,8 +32,6 @@
 				"Puntos picado: " + puntosPicado() + "\n" +
 				"Puntos captura: " + Math.floor(puntosCaptura()*100)/100 + "\n" +
 				" ---------------- " + "\n" +
-				"Valoración tecnica global: " + Math.floor(valoracionTecnicaGlobal()*100)/100 + "\n" +
-				" ---------------- " + "\n" +
 				"Bonificación tiempo: " + bonificacionTiempo() + "\n" +
 				"Recogida señuelo: " + bonificacionRecogidaSeñuelo() + "\n" +
 				" ---------------- " + "\n" +
@@ -68,7 +66,7 @@
 
 			function puntosRemontada(){
 				
-				var tiempo = (( document.getElementById("tiempoServicio").valueAsDate - document.getElementById("tiempoSalida").valueAsDate) / 1000 ) / 60 / 60;
+				var tiempo = (( document.getElementById("tiempoServicio").valueAsDate) / 1000 ) / 60 / 60;
 				var altura = document.getElementById("alturaServicio").value;
 				var remontada = altura / tiempo ;
 
@@ -114,8 +112,11 @@
 			}
 
 			function bonificacionTiempo(){
-				var tiempo = (( document.getElementById("tiempoServicio").valueAsDate) / 1000 ) / 60 / 60;
-				var tiempoSobrante = 8 - tiempo;
+				var tiempo = (( document.getElementById("tiempoVuelo").valueAsDate) / 1000 ) / 60 / 60;
+				if(tiempo == 0){
+					return 0;
+				}
+				var tiempoSobrante = 10 - tiempo;
 				if(tiempoSobrante < 0){
 					return 0;
 				}
@@ -176,28 +177,28 @@
 						</div>
 					<div class="form-row">
 						<div class="form-wrapper">
-							<label for="">Tiempo salida</label>
-							<input type="time" class="form-control" id="tiempoSalida" placeholder="Tiempo salida">
-						</div>
-						<div class="form-wrapper">
 							<label for="">Tiempo servicio</label>
 							<input type="time" class="form-control" id="tiempoServicio" placeholder="Tiempo servicio">
 						</div>
-					</div>
-					<div class="form-row">
 						<div class="form-wrapper">
-							<label for="">Altura de servicio</label>
-							<input type="number" class="form-control" id="alturaServicio" placeholder="Altura servicio" value=0>
-						</div>
-						<div class="form-wrapper">
-							<label for="">Posición de servicio</label>
-							<input type="number" class="form-control" id="posicionServicio" placeholder="posicion servicio" value=0>
+								<label for="">Tiempo vuelo</label>
+								<input type="time" class="form-control" id="tiempoVuelo" placeholder="Tiempo vuelo">
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-wrapper">
-							<label for="">Velocidad picado</label>
-							<input type="number" class="form-control" id="velocidadPicado" placeholdeer="picado" value=0>
+								<label for="">Altura de servicio</label>
+								<input type="number" class="form-control" id="alturaServicio" placeholder="Altura servicio" value=0>
+						</div>
+						<div class="form-wrapper">
+								<label for="">Posición de servicio</label>
+								<input type="number" class="form-control" id="posicionServicio" placeholder="posicion servicio" value=0>
+						</div>
+				    </div>
+					<div class="form-row">
+						<div class="form-wrapper">
+								<label for="">Velocidad picado</label>
+								<input type="number" class="form-control" id="velocidadPicado" placeholdeer="picado" value=0>
 						</div>
 					</div>
 					<div class="form-row last">
@@ -205,7 +206,7 @@
 							<label for="">Captura</label>
 							<select name="captura" id="captura" class="form-control">
 								<option value="0">Sin captura</option>
-								<option value="12">Captura con cuchillada limpia</option>
+								<option value="12">Captura con cuchillada limpia o en el aire</option>
 								<option value="15">Captura con persecución corta o en el suelo</option>
 								<option value="18">Captura persecución larga</option>
 								<option value="40">Acuchillada limpia</option>
